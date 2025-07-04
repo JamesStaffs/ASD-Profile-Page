@@ -13,6 +13,7 @@ function ContactForm() {
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
+
         setFormData({
             ...formData,
             [name]: type === 'checkbox' ? checked : value
@@ -23,7 +24,7 @@ function ContactForm() {
         e.preventDefault();
         setStatus(null);
 
-        const url = "https://webhook.site/9da76c8b-d843-46ba-84c7-e2547fe4d379";
+        const url = "https://webhook.site/d85c67d4-cfac-41c1-9916-1367ef693548";
         const form = new FormData();
         for (const key in formData) {
             form.append(key, formData[key]);
@@ -48,34 +49,9 @@ function ContactForm() {
 
     return (
         <>
-            <header>
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Profile</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </nav>
-                <h1>Contact James</h1>
-            </header>
+            <Header title="Contact James" />
 
-            {status === 'success' && (
-                <section id="contact-success">
-                    <h2>Thank you</h2>
-                    <p>Your contact submission has been successfully sent.</p>
-                    <p>Please expect a reply, if requested, within 2 business days.</p>
-                </section>
-            )}
-
-            {status === 'failure' && (
-                <section id="contact-failure">
-                    <h2>An error occurred</h2>
-                    <p>Unfortunately your contact submission could not be processed at this time.</p>
-                    <p>
-                        Please contact me via email <a href="mailto:james.stanley@staffs.ac.uk">james.stanley@staffs.ac.uk</a>,
-                        or try this form submission again.
-                    </p>
-                </section>
-            )}
+            <ContactStatus status={status} />
 
             {status !== 'success' && (
                 <form id="contact" onSubmit={handleSubmit}>
@@ -119,7 +95,7 @@ function ContactForm() {
                 </form>
             )}
         </>
-    );
+    )
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(<ContactForm />);

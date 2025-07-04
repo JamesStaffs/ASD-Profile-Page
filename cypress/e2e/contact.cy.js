@@ -8,10 +8,12 @@ describe('Contact Form', () => {
         cy.get('h1').should('contain', 'Contact James');
     });
 
-    it('has navigation links to itself and the contact page', () => {
-        cy.get('nav a').should('have.length', 2);
-        cy.get('nav a').first().should('have.attr', 'href', 'index.html');
-        cy.get('nav a').last().should('have.attr', 'href', 'contact.html');
+    it('has navigation links to itself and the contact pages', () => {
+        cy.get('nav').within(() => {
+            cy.get('a[href="index.html"]').should('exist');
+            cy.get('a[href="contact.html"]').should('exist');
+            cy.get('a[href="contact-react.html"]').should('exist');
+        });
     });
 
     it('submits successfully to webhook.site', () => {

@@ -1,6 +1,6 @@
 describe('React Contact Form', () => {
+
     beforeEach(() => {
-        // Replace with your actual local or deployed URL
         cy.visit('http://127.0.0.1:5500/contact-react.html');
     });
 
@@ -8,10 +8,12 @@ describe('React Contact Form', () => {
         cy.get('h1').should('contain', 'Contact James');
     });
 
-    it('has navigation links to itself and the contact page', () => {
-        cy.get('nav a').should('have.length', 2);
-        cy.get('nav a').first().should('have.attr', 'href', 'index.html');
-        cy.get('nav a').last().should('have.attr', 'href', 'contact.html');
+    it('has navigation links to itself and the contact pages', () => {
+        cy.get('nav').within(() => {
+            cy.get('a[href="index.html"]').should('exist');
+            cy.get('a[href="contact.html"]').should('exist');
+            cy.get('a[href="contact-react.html"]').should('exist');
+        });
     });
 
     it('submits successfully to webhook.site', () => {
@@ -23,8 +25,8 @@ describe('React Contact Form', () => {
 
         cy.get('form#contact').submit();
 
-        cy.get('#contact-success').should('be.visible');
-        cy.get('#contact-failure').should('not.be.visible');
+        cy.get('#contact-success').should('exist').and('be.visible');
+        cy.get('#contact-failure').should('not.exist');
     });
 
     it('submits successfully', () => {
@@ -41,8 +43,8 @@ describe('React Contact Form', () => {
         cy.get('form#contact').submit();
         cy.wait('@formSubmit');
 
-        cy.get('#contact-success').should('be.visible');
-        cy.get('#contact-failure').should('not.be.visible');
+        cy.get('#contact-success').should('exist').and('be.visible');
+        cy.get('#contact-failure').should('not.exist');
     });
 
     it('displays an error on submission failure', () => {
@@ -59,8 +61,8 @@ describe('React Contact Form', () => {
         cy.get('form#contact').submit();
         cy.wait('@formSubmit');
 
-        cy.get('#contact-failure').should('be.visible');
-        cy.get('#contact-success').should('not.be.visible');
+        cy.get('#contact-failure').should('exist').and('be.visible');
+        cy.get('#contact-success').should('not.exist');
     });
 
     it('requires full name field to be filled', () => {
