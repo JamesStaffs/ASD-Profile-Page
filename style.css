@@ -1,0 +1,56 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+}
+.hidden {
+    display: none;
+}
+
+/* Home / profile page styles */
+section {
+    margin: 20px;
+    padding: 0 20px;
+    border: 1px solid #ddd;
+
+    h2 {
+        text-decoration: underline;
+    }
+}
+
+section#background {
+    background-color: #f9f9f9;
+}
+
+section#experience {
+    background-color: #f0f8ff;
+}
+
+section#goals {
+    background-color: #e9f7ef;
+}
+
+/* Contact page styles */
+#contact-success, #contact-failure {
+    margin: 0;
+}
+#contact-success {
+    background-color: #d4edda;
+}
+#contact-failure {
+    background-color: #f8d7da;
+}
+
+form {
+    border: 1px solid #ccc;
+    padding: 20px;
+
+    p:not(.field-inline) {
+        label {
+            display: block;
+        }
+    }
+
+    .required-field {
+        color: red;
+    }
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contact - James Stanley</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Profile</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <h1>Contact James</h1>
+    </header>
+
+    <section id="contact-success" class="hidden">
+        <h2>Thank you</h2>
+        <p>Your contact submission has been successfully sent.</p>
+        <p>Please expect a reply, if requested, within 2 business days.</p>
+    </section>
+    
+    <section id="contact-failure" class="hidden">
+        <h2>An error occurred</h2>
+        <p>Unfortunately your contact submission could not be processed at this time.</p>
+        <p>Please contact me via. email <a href="mailto:james.stanley@staffs.ac.uk">james.stanley@staffs.ac.uk</a>, or try this form submission again.</p>
+    </section>
+
+    <!--
+        Generate your own URL by visiting https://webhook.site
+        and then update the action attribute on the form element
+    -->
+    <form id="contact" method="POST" action="https://webhook.site/9da76c8b-d843-46ba-84c7-e2547fe4d379">
+        <p>
+            <label for="full_name">Full name<sup class="required-field">*</sup>:</label>
+            <input type="text" name="full_name" id="full_name" required>
+        </p>
+
+        <p>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email">
+        </p>
+
+        <p class="field-inline">
+            <label for="priority">Priority:</label>
+            <select name="priority" id="priority">
+                <option value="0">Low</option>
+                <option value="1" selected>Normal</option>
+                <option value="2">High</option>
+            </select>
+        </p>
+
+        <p class="field-inline">
+            <label for="reply">Reply requested:</label>
+            <input type="checkbox" name="reply" id="reply">
+        </p>
+
+        <p>
+            <label for="message">Message<sup class="required-field">*</sup>:</label>
+            <textarea name="message" id="message" rows="10" required></textarea>
+        </p>
+
+        <input type="submit" value="Send">
+
+        <p><sup class="required-field">*</sup> indicates a required field</p>
+    </form>
+
+    <!--
+    Script included at the bottom of the body
+    as a 'progressive enhancement'.
+    -->
+    <script src="contact.js"></script>
+</body>
+
+</html>
